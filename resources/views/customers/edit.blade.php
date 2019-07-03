@@ -11,15 +11,24 @@
                     @csrf
                     <div class="form-group">
                         <label>Tên khách hàng</label>
-                        <input type="text" class="form-control" name="name" value="{{ $customer->name }}" required>
+                        <input type="text" class="form-control" name="name" value="{{ $customer->name }}">
+                        @if($errors->has('name'))
+                            <p class="text-danger">{{$errors->first('name')}}</p>
+                        @endif
                     </div>
                     <div class="form-group">
-                        <label>Tuổi</label>
-                        <input type="text" class="form-control" name="age" value="{{ $customer->age }}" required>
+                        <label>Ngày sinh</label>
+                        <input type="text" class="form-control" name="age" value="{{ $customer->age }}">
+                        @if($errors->has('age'))
+                            <p class="text-danger">{{$errors->first('age')}}</p>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control" name="email" value="{{ $customer->email }}" required>
+                        <input type="email" class="form-control" name="email" value="{{ $customer->email }}">
+                        @if($errors->has('email'))
+                            <p class="text-danger">{{$errors->first('email')}}</p>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Tỉnh thành</label>

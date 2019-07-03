@@ -36,9 +36,10 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Tên khách hàng</th>
-                    <th scope="col">Ngày Sinh</th>
+                    <th scope="col">Ngày sinh</th>
                     <th scope="col">Email</th>
                     <th scope="col">Tỉnh thành</th>
+                    <th scope="col">Images</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -49,14 +50,20 @@
                         <td colspan="7" class="text-center">Không có dữ liệu</td>
                     </tr>
                 @else
+
                     @foreach($customers as $key => $customer)
                         <tr>
                             <th scope="row">{{ ++$key }}</th>
                             <td>{{ $customer->name }}</td>
-                            <td>{{ $customer->dob }}</td>
+                            <td>{{ $customer->age}}</td>
                             <td>{{ $customer->email }}</td>
-                            @if(isset($customer->city))
-                                <td>{{ $customer->city->name }}</td>
+                            <td>
+                                {{$customer->city->name}}
+                            </td>
+                            @if(isset($customer->images))
+                                <td>
+                                    <img src="{{asset('storage/' . $customer->images)}}" style="width: 60px">
+                                </td>
                             @else
                                 <td>
                                     Không có dữ liệu
@@ -122,4 +129,5 @@
             </div>
         </div>
     </div>
+    {{$customers->links()}}
 @endsection
